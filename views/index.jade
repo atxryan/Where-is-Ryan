@@ -1,0 +1,17 @@
+﻿extends layout
+
+block content
+  h1= title
+  p Where was Ryan last seen?
+  p #{checkins[0].venue.name}
+  ol
+  -for checkin in checkins
+    li 
+      div
+        img(src="#{checkin.venue.categories[0].icon.prefix}bg_32.png")
+        div
+          h4 
+            strong #{checkin.venue.name}
+          p #{checkin.createdAt}
+      
+      
