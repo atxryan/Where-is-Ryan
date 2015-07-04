@@ -4,6 +4,9 @@ block content
   h1= title
   p Where was Ryan last seen?
   p #{checkins[0].venue.name}
+  
+  div#map
+  
   ol
   -for checkin in checkins
     li 
