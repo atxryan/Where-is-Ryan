@@ -5,10 +5,23 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var config = require('./config')
+var nconf = require('nconf');
+//var config = require('./config')
 var routes = require('./routes/_routes');
 
-var foursquare = require('node-foursquare')(config);
+// Create nconf environtment 
+nconf 
+    .file({ file: 'config.json' }) 
+    .env(); 
+
+var foursquare_config = { 
+    "secrets" : {
+        "clientId" : nconf.get("foursquare_clientId"),
+        "clientSecret" : nconf.get("foursquare_clientSecret"),
+        "redirectUrl" : nconf.get("foursquare_redirectUrl")
+    }
+};
+var foursquare = require('node-foursquare')(foursquare_config);
 
 
 var app = express();
