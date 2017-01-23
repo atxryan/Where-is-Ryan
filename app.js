@@ -5,9 +5,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var nconf = require('nconf');
-//var config = require('./config')
 var routes = require('./routes/_routes');
+
+var nconf = require('nconf');
 
 // Create nconf environtment 
 nconf 
